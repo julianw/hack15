@@ -12,6 +12,29 @@ var Crawler = require('./crawler.js');
 
 var argv = yargs.usage('Usage: $0 --crawl [string] --page-limit [num] --save-doc [string] --load-doc [string] --save-data [string] --no-tree --full-tree --keep-html --page-sign --load-data [string] --save-cluster [string] --save-reduced-html [string] --analyze').argv;
 
+// command line parameters
+// This script dose 3 things:
+//
+// - LOAD HTML DOCUMENTS (from crawler / local file)
+//   with crawling:
+//     --crawl URL_TO_BEGIN_WITH --page-limit [default 100] --save-doc FILE_PATH
+//   from a local file from previsou crawl:
+//   --load-doc FILE_PATH
+//
+// - PARSE DOCUMENTS ( if there is a document source, the parse will happen )
+//   --no-tree (same smaller file if you don't need a tree for the html)
+//   --full-tree (do not reduce the tree, keep repeating items)
+//   --keep-html (keeping full html in output data)
+//   --save-data FILE_PATH
+//
+// - ANALYZE PARSED DATA ( with --analyze and if there are parsed document )
+//   -- from parsed data, calculate similarity / clustering
+//   -- save-cluster FILE_PATH (save the result, Not implemented)
+//
+// node app.js [commands]
+// --crawl URL_TO_BEGIN_WITH --page-limit [default 100] --save-doc FILE_PATH
+//
+
 var app = {
   docCount:0,
   crawlerDone:false,
