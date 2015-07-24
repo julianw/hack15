@@ -71,7 +71,7 @@ Crawler.prototype = {
   depthLimit:5,
   sleepInterval: 1,
   sampling:true,
-  pageLimit:50,
+  pageLimit:100,
   pageCount:0,
   //allDocs:[],
   setConfig:function(config) {
